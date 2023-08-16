@@ -7,5 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :transfers, foreign_key: 'author_id'
-  has_many :groups       
+  has_many :groups
 end
