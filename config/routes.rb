@@ -4,7 +4,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :transfers, only: [:index, :new, :create, :destroy]
-  resources :groups, only: [:index, :new, :create, :destroy]
-  root "users#index"
+  resources :groups, only: [:index, :new, :create, :destroy] do
+    resources :transfers, only: [:index, :new, :create, :show, :destroy] 
+   end
+   # Defines the root path route ("/")
+   
+   devise_scope :user do
+     authenticated :user do
+       root "groups#index", as: :authenticated_root
+     end
+     unauthenticated :user do
+       root "home#index", as: :unauthenticated_root
+     end
+  end
 end
