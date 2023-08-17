@@ -1,38 +1,35 @@
 <%= render 'shared/navbar' %>
 
-<div>
-    <button><%= link_to "Back", groups_path %><button>
-</div>
+<button class="back"><%= link_to "back", groups_path  %></button>
 
-<div>
-  <h2>Add New Expense</h2>
+<div class="group_main_div">
+  <h2 class="group_main_title">Add New Expense</h2>
+
   <%= form_with(model: @transfer, url: group_transfers_path, method: :post) do |f| %>
-  <div class="field">
-  <%= f.label :name %>
-  <%= f.text_field :name, placeholder: 'Name Expenses' %>
-  </div>
+  <div  class="group_form">
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: 'Name Expenses', class: "field" %>
+    </div>
 
-  <div class="field">
-  <%= f.label : amount %>
-  <%= f.number_field :amount, step: 1, placeholder: 'Amount Spent' %>
-  </div>
+    <div class="field">
+      <%= f.label :amount %>
+      <%= f.number_field :amount, step: 1, placeholder: 'Amount Spent', class: "field"%>
+    </div>
 
-   <% if @groups.present? %>
+    <% if @groups.present? %>
       <div>
         <%= f.label :groups %>
         <% @groups.each do |group| %>
           <div class="checkbox">
-            <%= f.check_box :group_ids, { multiple: true }, group.id, nil %>
+            <%= f.check_box :group_ids, { multiple: true }, group.id %>
             <%= f.label group.name %>
           </div>
         <% end %>
       </div>
     <% end %>
-
-    <%= f.submit 'Save', class: 'Submit-expense-btn' %>
+  
+    <%= f.submit 'Save', class: 'category' %>
+    </div>
   <% end %>
-
-  <footer>
-    © 2023 budgetapp. All rights reserved.
-  </footer>
 </div>
