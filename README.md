@@ -172,7 +172,6 @@ This app was designed based on an original design idea by [Gregoire Vella on Beh
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## 📝  License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
